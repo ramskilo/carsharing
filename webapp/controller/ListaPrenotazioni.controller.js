@@ -18,6 +18,7 @@ sap.ui.define([
             },
             
             successREST: function (data){
+                var that = this;
                 /*var myData = data.value;
 
                 var oModel = new JSONModel();
@@ -31,27 +32,35 @@ sap.ui.define([
             },
 
             errorREST: function (){
-                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
+                var that = this;
+                MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
             },
 
 
             onRESTCall: function() {
-              
+/*              
                 $.ajax({
                     method: "GET",
                     url: "REST/Prenotazioni",
                     dataType: "JSON"
-                    }).done(function(data){console.log(data)});
-/*
-                var sURL = "https://685563a6trial-dev-srv-carshare.cfapps.eu10.hana.ondemand.com/Prenotazioni";
+                    }).done(function(data){console.log(data)});*/
+                
+                var that = this;
+
+                var sURL = "REST/Prenotazioni";
                 $.ajax({
                     type: "GET",
                     url: sURL,
                     contentType: "application/json",
                     datatype: "json",
-                    success: this.successREST.bind(this),
-                    error: [this.errorREST, this] 
-                });*/
+                    async: false,
+                    success: function (oResults) {
+                        that.getView().setModel(new JSONModel(oResults), "Prenotazioni");//Modello, nome Modello
+                    },
+                    error: function (oError) { 
+                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
+                    }
+                });
             }   
 		});
 	});
