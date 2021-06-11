@@ -1,0 +1,20 @@
+<mvc:View
+    controllerName="carsharing.controller.main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+                    <content>
+                        <StandardTile title="{i18n>titleAuto}" press="launchAuto" icon="sap-icon://car-rental" />                    
+                        <StandardTile title="{i18n>titlePrenotazioni}" press="launchPrenotazioni" icon="sap-icon://check-availability" />
+                        <StandardTile title="{i18n>titleChat}" press="launchChat" icon="sap-icon://headset" />
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

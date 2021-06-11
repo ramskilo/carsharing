@@ -1,0 +1,103 @@
+<mvc:View xmlns:table="sap.ui.table"
+    controllerName="carsharing.controller.ListaPrenotazioni"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" 	xmlns:core="sap.ui.core"
+>
+	<Shell id="shell">
+		<App id="app">
+
+		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{i18n>headerTitlePrenotazioni}"/>
+					</f:heading>
+
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+            <f:header>
+			    <f:DynamicPageHeader>
+                    <f:content>
+                        <fb:FilterBar id="filterBar" header="Header" reset="onReset" search="onRESTCall" clear="onClear" cancel="onCancel" 
+		                filtersDialogClosed = "onFiltersDialogClosed"
+		                showRestoreButton="true" showClearButton="true" showClearOnFB="true">
+
+			                <fb:filterGroupItems>
+
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>idPrenotazioni}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input type="Text" id="idPrenotazioni" ></Input>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>lbData}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker change="onChange"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem>                             
+
+			                </fb:filterGroupItems>	
+
+                        </fb:FilterBar>
+                    </f:content>
+			    </f:DynamicPageHeader>
+            </f:header>
+			<f:content>
+                <Table noDataText="{i18n>NoData}" items="{Prenotazioni>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>utente}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>targa}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>data_crea}"/>
+                        </Column>  
+                        <Column>
+                            <Text text="{i18n>data_inizio}"/>
+                        </Column>     
+                        <Column>
+                            <Text text="{i18n>data_fine}"/>
+                        </Column>  
+                        <Column>
+                            <Text text="{i18n>stato}"/>
+                        </Column>  
+                        <Column>
+                            <Text text="{i18n>note}"/>
+                        </Column>  
+                        <Column>
+                        </Column>  
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{Prenotazioni>utente}" />
+                                <Text text="{Prenotazioni>targa}" />
+                                <Text text="{Prenotazioni>data_crea}" />
+                                <Text text="{Prenotazioni>data_inizio}" />
+                                <Text text="{Prenotazioni>data_fine}" />
+                                <Text text="{Prenotazioni>stato}" />
+                                <Text text="{Prenotazioni>note}" />                    
+                            </cells>
+                        </ColumnListItem>
+                    </items>                
+                </Table>   
+
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+
+			</f:footer>
+		</f:DynamicPage>
+
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,43 @@
+<mvc:View xmlns:table="sap.ui.table"
+    controllerName="carsharing.controller.ListaAuto"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" 	xmlns:core="sap.ui.core"
+>
+	<Shell id="shell">
+		<App id="app">
+
+		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{i18n>headerTitleAuto}"/>
+					</f:heading>
+
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+            <f:header>
+			    <f:DynamicPageHeader>
+                    <f:content>
+
+
+                    </f:content>
+			    </f:DynamicPageHeader>
+            </f:header>
+			<f:content>
+
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+
+			</f:footer>
+		</f:DynamicPage>
+
+		</App>
+	</Shell>
+</mvc:View>
