@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+      <Dialog
+      title="{i18n>titlePrenotazioni} {Prenotazioni>/id}">
+      <content>
+         <Label text="{i18n>utente}"      design="Bold"/><Input id="inUtente"      value="{Prenotazioni>/utente}" /> 
+         <Label text="{i18n>targa}"       design="Bold"/><Input id="inTarga"       value="{Prenotazioni>/targa}" /> 
+         <Label text="{i18n>data_inizio}" design="Bold"/><Input id="inData_inizio" value="{Prenotazioni>/data_inizio}" />
+         <Label text="{i18n>ora_inizio}"  design="Bold"/><Input id="inOra_inizio"  value="{Prenotazioni>/ora_inizio}" />         
+         <Label text="{i18n>data_fine}"   design="Bold"/><Input id="inData_fine"   value="{Prenotazioni>/data_fine}" />
+         <Label text="{i18n>ora_fine}"    design="Bold"/><Input id="inOra_fine"    value="{Prenotazioni>/ora_fine}" />     
+         <Label text="{i18n>note}"        design="Bold"/><Input id="inNote"        value="{Prenotazioni>/note}" /> 
+         <Input id="inID" visible= "false" value="{Prenotazioni>/id}" />
+      </content>
+      <buttons>
+        <Button type="Reject" icon="sap-icon://decline" press="onClose"/>
+        <Button type="Accept" icon="sap-icon://save" press="onSave"/>
+      </buttons>
+   </Dialog>
+</core:FragmentDefinition>

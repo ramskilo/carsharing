@@ -10,7 +10,7 @@ sap.ui.define([
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller, Filter, FilterOperator, ODataModel, JSONModel, MessageBox, DatiAuto) {
+	function (Controller, Filter, FilterOperator, ODataModel, JSONModel, MessageBox, Auto) {
 		"use strict";
 
 		return Controller.extend("carsharing.controller.ListaAuto", {
@@ -32,50 +32,20 @@ sap.ui.define([
                     contentType: "application/json",
                     datatype: "json",
                     success: function(oResults){
-                         that.getView().setModel(new JSONModel(oResults), "ListaAuto");
+                         that.getView().setModel(new JSONModel(oResults), "Auto");
                     },
                     error: function (){
                         MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror")); 
                     }
                 });
-            },             
-            onCreate: function() {
-              /* 
-              var that = this;
-              var sURL = "REST/Auto";
-                $.ajax({
-                    type: "POST",
-                    url: sURL,
-                    contentType: "application/json",
-                    datatype: "json",
-                    data: { "targa": path.targa, 
-                            "marca": path.marca, 
-                            "modello": path.modello, 
-                            "classe": path.classe, 
-                            "note": path.note },
-                    success: function(oResults){
-                         that.getView().setModel(new JSONModel(oResults), "ListaAuto");
-                    },
-                    error: function (){
-                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror")); 
-                    }                    
-                });
-               */
-                // L'oEvent in questo caso contiene l'evento di pressione del pulsante
-                // var path = oEvent.getSource().getParent().getBindingContext("ListaAuto").getObject();    
-                // var model = new JSONModel(path);
-                // this.getView().setModel(model, "DatiAuto"); 
-                //var that = this;
-                var MyDatiAuto = new DatiAuto();
-                MyDatiAuto.openDialog(this, this.getView());              
-            },            
+            },
             onEdit: function(oEvent) {
                 // L'oEvent in questo caso contiene l'evento di pressione del pulsante
-                var path = oEvent.getSource().getParent().getBindingContext("ListaAuto").getObject();    
+                var path = oEvent.getSource().getParent().getBindingContext("Auto").getObject();    
                 var model = new JSONModel(path);
-                this.getView().setModel(model, "DatiAuto"); 
-                var MyDatiAuto = new DatiAuto();
-                MyDatiAuto.openDialog(this, this.getView());                     
+                this.getView().setModel(model, "Auto"); 
+                var MyAuto = new Auto();
+                MyAuto.openDialog(this, this.getView());                     
             },   
 		});
 	});

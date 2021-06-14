@@ -10,13 +10,14 @@
 	<Shell id="shell">
 		<App id="app">
 
-		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+		<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}" showFooter="true">
 			<!-- DynamicPage Title -->
 			<f:title>
 				<f:DynamicPageTitle>
 					<f:heading>
 						<Title text="{i18n>headerTitlePrenotazioni}"/>
 					</f:heading>
+
 				</f:DynamicPageTitle>
 			</f:title>
 			<!-- DynamicPage Header -->
@@ -24,28 +25,42 @@
 			    <f:DynamicPageHeader>
                     <f:content>
                         <fb:FilterBar id="filterBar" header="Header" reset="onReset" search="onRESTCall" clear="onClear" cancel="onCancel" 
-		                filtersDialogClosed = "onFiltersDialogClosed"  showRestoreButton="true" showClearButton="true" showClearOnFB="true">
+		                filtersDialogClosed = "onFiltersDialogClosed"
+		                showRestoreButton="true" showClearButton="true" showClearOnFB="true">
+
 			                <fb:filterGroupItems>
+
                                 <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>idPrenotazioni}" partOfCurrentVariant="true" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input type="Text" id="idPrenotazioni" ></Input>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>lbData}" partOfCurrentVariant="true" visibleInFilterBar="true">
+
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>targa}" partOfCurrentVariant="true" visibleInFilterBar="true">
                                     <fb:control>
-                                        <DatePicker change="onChange"/>
+                                        <Input type="Text" id="inTarga" ></Input>
                                     </fb:control>
-                                </fb:FilterGroupItem>                             
+                                </fb:FilterGroupItem>                                
+
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>lbData}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker change="onChange" id="inDatacrea"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem>    
 
 			                </fb:filterGroupItems>	
+
                         </fb:FilterBar>
                     </f:content>
 			    </f:DynamicPageHeader>
             </f:header>
 			<f:content>
-                <Table noDataText="{i18n>NoData}" items="{Prenotazioni>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+                <Table noDataText="{i18n>NoDataPrenotazione}" items="{Prenotazioni>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
 
                     <columns>
+                        <Column  visible= "false">
+                            <Text text="{i18n>id}"/>
+                        </Column>                    
                         <Column>
                             <Text text="{i18n>utente}"/>
                         </Column>
@@ -56,30 +71,47 @@
                             <Text text="{i18n>data_crea}"/>
                         </Column>  
                         <Column>
+                            <Text text="{i18n>ora_crea}"/>
+                        </Column>                        
+                        <Column>
                             <Text text="{i18n>data_inizio}"/>
-                        </Column>     
+                        </Column>   
+                        <Column>
+                            <Text text="{i18n>ora_inizio}"/>
+                        </Column>                            
                         <Column>
                             <Text text="{i18n>data_fine}"/>
                         </Column>  
+                        <Column>
+                            <Text text="{i18n>ora_fine}"/>
+                        </Column>                         
                         <Column>
                             <Text text="{i18n>stato}"/>
                         </Column>  
                         <Column>
                             <Text text="{i18n>note}"/>
                         </Column>  
-                        <Column>
-                        </Column>  
+                        <Column></Column>
+                        <Column></Column>  
+                        <Column></Column> 
                     </columns>
                     <items>
                         <ColumnListItem>
                             <cells>
+                                <Text text="{Prenotazioni>id}" />
                                 <Text text="{Prenotazioni>utente}" />
                                 <Text text="{Prenotazioni>targa}" />
                                 <Text text="{Prenotazioni>data_crea}" />
+                                <Text text="{Prenotazioni>ora_crea}" />                                
                                 <Text text="{Prenotazioni>data_inizio}" />
+                                <Text text="{Prenotazioni>ora_inizio}" />                                 
                                 <Text text="{Prenotazioni>data_fine}" />
+                                <Text text="{Prenotazioni>ora_fine}" />                                 
                                 <Text text="{Prenotazioni>stato}" />
-                                <Text text="{Prenotazioni>note}" />                    
+                                <Text text="{Prenotazioni>note}" />   
+                                <Button icon="sap-icon://edit"   press="onEditPrenotazione"/>     
+                                <Button icon="sap-icon://delete" press="onDeletePrenotazione"/>   
+                                <Button icon="sap-icon://accept" press="onApprovePrenotazione"/>                                            
                             </cells>
                         </ColumnListItem>
                     </items>                
@@ -88,7 +120,11 @@
 			</f:content>
 			<!-- DynamicPage Footer -->
 			<f:footer>
-
+			<Toolbar>
+				<Button icon="sap-icon://nav-back" press="onBack" />
+                <ToolbarSpacer/>
+                <Button text="{i18n>lbNewPren}" type="Emphasized" icon="sap-icon://add" press="onNewPrenotazione"/>
+			</Toolbar>
 			</f:footer>
 		</f:DynamicPage>
 
