@@ -91,7 +91,7 @@
             "routes": [
                 {
                     "name": "Routemain",
-                    "pattern": "Routemain",
+                    "pattern": "",
                     "target": [
                         "Targetmain"
                     ]
@@ -116,7 +116,7 @@
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "main",
+                    "viewId": "",
                     "viewName": "main"
                 },
                 "TargetListaPrenotazioni": {

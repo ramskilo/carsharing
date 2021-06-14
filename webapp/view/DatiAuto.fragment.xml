@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core">
+      <Dialog
+      title="{i18n>dati_auto}">
+      <content>
+        <Label text="{i18n>targa}" design="Bold"/>
+        <Input id="targa" value="{DatiAuto>/targa}"/>
+        <Label text="{i18n>marca}" design="Bold"/>
+        <Input id="marca" value="{DatiAuto>/marca}"/>        
+        <Label text="{i18n>modello}" design="Bold"/>
+        <Input id="modello" value="{DatiAuto>/modello}"/>
+        <Label text="{i18n>classe}" design="Bold"/>
+        <Input id="classe" value="{DatiAuto>/classe}"/>
+        <Label text="{i18n>stato}" design="Bold"/>
+        <Input id="stato" value="{DatiAuto>/stato}"/>           
+        <Label text="{i18n>note}" design="Bold"/>
+        <Input id="note" value="{DatiAuto>/note}"/>     
+      </content>
+      <buttons>
+        <Button type="Reject" icon="sap-icon://decline" press="onClose"/>
+        <Button type="Accept" icon="sap-icon://save" press="onSave"/>
+      </buttons>
+   </Dialog>
+</core:FragmentDefinition>

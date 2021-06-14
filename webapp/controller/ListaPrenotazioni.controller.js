@@ -17,48 +17,44 @@ sap.ui.define([
 
             },
             
-            successREST: function (data){
-                var that = this;
-                /*var myData = data.value;
+            /* successREST: function (data){
+                var myData = data.value;
 
                 var oModel = new JSONModel();
                 oModel.setData({
                     "Prenotazioni": myData
                 });
                 var oList = this.getView().byID("idPrenotazioni");
-                oList.setModel(oModel);*/
+                oList.setModel(oModel);
 
                 that.getView().setModel(new JSONModel(data.value), "Prenotazioni");//Modello, nome Modello 
             },
 
             errorREST: function (){
-                var that = this;
-                MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
-            },
+                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
+            }, 
+            */
 
 
             onRESTCall: function() {
-/*              
-                $.ajax({
+              var that = this;
+               /* $.ajax({
                     method: "GET",
                     url: "REST/Prenotazioni",
                     dataType: "JSON"
-                    }).done(function(data){console.log(data)});*/
-                
-                var that = this;
-
+                    }).done(function(data){console.log(data)});
+             */
                 var sURL = "REST/Prenotazioni";
                 $.ajax({
                     type: "GET",
                     url: sURL,
                     contentType: "application/json",
                     datatype: "json",
-                    async: false,
-                    success: function (oResults) {
-                        that.getView().setModel(new JSONModel(oResults), "Prenotazioni");//Modello, nome Modello
+                    success: function(oResults){
+                         that.getView().setModel(new JSONModel(oResults), "Prenotazioni");
                     },
-                    error: function (oError) { 
-                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror"));
+                    error: function (){
+                        MessageBox.error(that.getView().getModel("i18n").getResourceBundle().getText("searcherror")); 
                     }
                 });
             }   
