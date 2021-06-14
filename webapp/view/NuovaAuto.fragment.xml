@@ -5,17 +5,17 @@
       title="{i18n>dati_auto}">
       <content>
         <Label text="{i18n>targa}" design="Bold"/>
-        <Input type="Text" id="targa" value="{DatiAuto>/targa}"/>
+        <Input type="Text" id="targa" />
         <Label text="{i18n>marca}" design="Bold"/>
-        <Input type="Text" id="marca" value="{DatiAuto>/marca}"/>        
+        <Input type="Text" id="marca" />        
         <Label text="{i18n>modello}" design="Bold"/>
-        <Input type="Text" id="modello" value="{DatiAuto>/modello}"/>
+        <Input type="Text" id="modello" />
         <Label text="{i18n>classe}" design="Bold"/>
-        <Input type="Text" id="classe" value="{DatiAuto>/classe}"/>
+        <Input type="Text" id="classe" />
         <Label text="{i18n>stato}" design="Bold"/>
-        <Input type="Text" id="stato" value="{DatiAuto>/stato}"/>           
+        <Input type="Text" id="stato" />           
         <Label text="{i18n>note}" design="Bold"/>
-        <Input type="Text" id="note" value="{DatiAuto>/note}"/>     
+        <Input type="Text" id="note" />     
       </content>
       <buttons>
         <Button type="Reject" icon="sap-icon://decline" press="onClose"/>

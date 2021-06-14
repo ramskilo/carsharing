@@ -1,12 +1,13 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"    
 ],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-    function (Controller) {
+    function (Controller, MessageBox) {
         "use strict";
-        return Controller.extend("carsharing.controller.DatiAuto", {
+        return Controller.extend("carsharing.controller.NuovaAuto", {
         openDialog: function (oController, oView) {
                 var oDialog = this._getDialog();
                 oView.addDependent(oDialog);
@@ -20,32 +21,32 @@ sap.ui.define([
             },
             onSave: function() {
               var that = this;
-              var targa = that.getView().byId("targa").getValue();  
-              var marca = that.getView().byId("marca").getValue();   
-              var modello = that.getView().byId("modello").getValue();   
-              var classe = that.getView().byId("classe").getValue();   
-              var note = that.getView().byId("note").getValue();                                                                        
-              var sURL = "REST/Auto/" + targa;
+              var targa = sap.ui.getCore().byId("targa").getValue();  
+              var marca = sap.ui.getCore().byId("marca").getValue();   
+              var modello = sap.ui.getCore().byId("modello").getValue();   
+              var classe = sap.ui.getCore().byId("classe").getValue();   
+              var note = sap.ui.getCore().byId("note").getValue();                                                                        
+              var sURL = "REST/Auto";
                 $.ajax({
-                    type: "PUT",
+                    type: "POST",
                     url: sURL,
                     contentType: "application/json",
                     datatype: "json",
-                    data: JSON.stringify({ "marca": marca, 
+                    data: JSON.stringify({ "targa": targa, 
+                                           "marca": marca, 
                                            "modello": modello, 
                                            "classe": classe, 
                                            "note": note }),
+                    contentType: 'application/JSON; charset=utf-8',   
                     success: function(oResults){
-                        MessageBox.success("Auto modificata"); 
+                        MessageBox.success("Auto Creata"); 
                         this.onClose();                         
                     },
                     error: function (){
-                        MessageBox.error("Errore modifica"); 
+                        MessageBox.error("Errore Creazione Auto"); 
                         this.onClose();                        
                     }                    
                 });
-    
-
                 //this.originView.getModel("DatiAuto").refresh();
                 //this.onClose();
             },            

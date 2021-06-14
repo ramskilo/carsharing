@@ -3,18 +3,104 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="sap.ui.core"
 >
+
 	<Shell id="shell">
-		<App id="app">
+		<App id="app" backgroundImage="" >
 			<pages>
-				<Page id="page" title="{i18n>title}">
-                    <content>
-                        <StandardTile title="{i18n>titleAuto}" press="launchAuto" icon="sap-icon://car-rental" />                    
-                        <StandardTile title="{i18n>titlePrenotazioni}" press="launchPrenotazioni" icon="sap-icon://check-availability" />
-                        <StandardTile title="{i18n>titleChat}" press="launchChat" icon="sap-icon://headset" />
-                    </content>
-				</Page>
-			</pages>
-		</App>
+ 				<Page id="page" title="{i18n>title}" backgroundDesign= "Transparent" showHeader="true">   
+
+ <!-- start tile -->
+    <Panel headerText=""> 
+        <content>	
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+                     header="{i18n>titleAuto}"
+                     subheader="" press="launchAuto">
+            <TileContent unit="" footer="{i18n>tileAutoFooter}">
+            <ImageContent src="sap-icon://car-rental" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+                     header="{i18n>titlePrenotazioni}"
+                     subheader="" press="launchPrenotazioni" >
+            <TileContent unit="" footer="{i18n>tilePrenotazioniFooter}">
+            <ImageContent src="sap-icon://check-availability" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+                     header="{i18n>titleChat}"
+                     subheader="" press="launchChat" >
+            <TileContent unit="" footer="{i18n>tileChatFooter}">
+            <ImageContent src="sap-icon://headset" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+                     header="{i18n>titleReport}"
+                     subheader="" press="launchChat" >
+            <TileContent unit="" footer="{i18n>tileReportFooter}">
+            <ImageContent src="sap-icon://activities" />
+            </TileContent>
+        </GenericTile>
+ 
+ <!--
+    	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage="/images/auto2.jpg"   
+ 	                 frameType="OneByOne" press="launchAuto">
+		    <TileContent footer="Gestione Auto" frameType="OneByOne">
+			<NewsContent contentText=""	subheader="" />
+		    </TileContent>
+	    </GenericTile>
+
+       	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage="/images/prenota3.png"   
+ 	                 frameType="OneByOne" press="launchPrenotazioni">
+		    <TileContent footer="Prenotazioni" frameType="OneByOne">
+			<NewsContent contentText=""	subheader="" />
+		    </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage="/images/chat2.png"   
+ 	                 frameType="OneByOne" press="launchChat">
+		    <TileContent footer="Chat" frameType="OneByOne">
+			<NewsContent contentText=""	subheader="" />
+		    </TileContent>
+	    </GenericTile>
+
+	    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage=""   
+ 	                 frameType="OneByOne" press="launchAuto">
+		    <TileContent footer="Parco macchine" frameType="OneByOne">
+			<NewsContent contentText="Auto"	subheader="" />
+		    </TileContent>
+	    </GenericTile>
+        
+       	<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage="test-resources/sap/m/demokit/sample/UploadCollection/LinkedDocuments/Screenshot.jpg"   
+ 	                 frameType="OneByOne" press="launchPrenotazioni">
+		    <TileContent footer="Gestione Richieste" frameType="OneByOne">
+			<NewsContent contentText="Prenota"	subheader="" />
+		    </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                     backgroundImage="test-resources/sap/m/images/NewsImage1.png"   
+ 	                 frameType="OneByOne" press="launchChat">
+		    <TileContent footer="Chat" frameType="OneByOne">
+		    <NewsContent contentText="Supporto"	subheader="" />
+		    </TileContent>
+	    </GenericTile>                   
+-->
+        </content>
+     </Panel>  
+ <!-- end tile -->
+ 	             </Page>
+	        </pages>
+	     </App>
 	</Shell>
 </mvc:View>

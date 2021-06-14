@@ -9,12 +9,11 @@
       "destination": "ui5"
     },
     {
-      "source": "/REST/(.*)$",
+      "source": "^/REST/(.*)$",
       "target": "$1",
       "authenticationType": "none",
-      "destination": "CarShareDestination",
-      "csrfProtection": false
-    }, 
+      "destination": "CarShareDestination"
+    },    
     {
       "source": "^/test-resources/(.*)$",
       "target": "/test-resources/$1",

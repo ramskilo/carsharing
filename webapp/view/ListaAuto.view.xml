@@ -3,6 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:m="sap.m"    
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:l="sap.ui.layout" 	
@@ -23,26 +24,61 @@
 			<!-- DynamicPage Header -->
             <f:header>
 			    <f:DynamicPageHeader>
-                        <fb:FilterBar id="filterBar" header="Header" reset="onReset" search="onRESTCall" clear="onClear" cancel="onCancel" 
+                    <fb:FilterBar id="filterBar" header="{i18n>headerTitleAuto}" reset="onReset" search="onRESTCall" clear="onClear" cancel="onCancel" 
 		                filtersDialogClosed = "onFiltersDialogClosed"  showRestoreButton="true" showClearButton="true" showClearOnFB="true">
 			                <fb:filterGroupItems>
                                 <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>Targa}" partOfCurrentVariant="true" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input type="Text" id="Targa" ></Input>
+                                        <Input type="Text" id="targaFilterID" ></Input>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>Modello}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>Marca}" partOfCurrentVariant="true" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input type="Text" id="Modello" ></Input>
+                                       <Input type="Text" id="marcaFilterID" ></Input>                                     
+                                       <!-- <InputListItem id="marcaFilterID">
+                                         <Select>
+                                            <core:Item key=" " text=" " />                                         
+                                            <core:Item key="AUDI" text="Audi" />
+                                            <core:Item key="ALFAROMEO" text="Alfa Romeo" />   
+                                            <core:Item key="BUGATTI" text="Bugatti" />                                                                                                                                 
+                                            <core:Item key="FERRARI" text="Ferrari" />
+                                            <core:Item key="FIAT" text="Fiat" />
+                                            <core:Item key="FORD" text="Ford" />
+                                          </Select> 
+                                        </InputListItem>   -->                                                                     								                                                                                                           
                                     </fb:control>
-                                </fb:FilterGroupItem>                             
-
+                                </fb:FilterGroupItem>   
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>Modello}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input type="Text" id="modelloFilterID" ></Input>
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="D" label="{i18n>Classe}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input type="Text" id="classeFilterID"/>   
+                                        <!--    <InputListItem id="classeFilterID">
+                                          <Select>
+                                            <core:Item key=" " text=" " />                                               
+                                            <core:Item key="BERLINA" text="Berlina" />                                          
+                                            <core:Item key="CITYCAR" text="CityCar" />
+                                            <core:Item key="COUPE" text="Coupe" />                                            
+                                            <core:Item key="MONOVOLUME" text="Monovolume" />                                            
+                                            <core:Item key="SW" text="Station-Wagon" />
+                                          </Select> 
+                                        </InputListItem>  -->
+                                    </fb:control>
+                                </fb:FilterGroupItem>                                  
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="E" label="{i18n>Stato}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input type="Text" id="stato" ></Input>
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
 			                </fb:filterGroupItems>	
-                        </fb:FilterBar>
+                    </fb:FilterBar>                       
 			    </f:DynamicPageHeader>
             </f:header>
 			<f:content>
-                <Table noDataText="{i18n>NoData}" items="{Auto>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+                <Table noDataText="{i18n>NoDataAuto}" items="{ListaAuto>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
                     <columns>
                         <Column>
                             <Text text="{i18n>targa}"/>
@@ -61,16 +97,19 @@
                         </Column>   
                         <Column>
                         </Column>  
+                        <Column>
+                        </Column>                         
                     </columns>
                     <items>
                         <ColumnListItem>
                             <cells>
-                                <Text text="{Auto>targa}" />
-                                <Text text="{Auto>marca}" />
-                                <Text text="{Auto>modello}" />
-                                <Text text="{Auto>classe}" />
-                                <Text text="{Auto>note}" />      
-                                <Button icon="sap-icon://edit" press="onEdit"/>                                                    
+                                <Text text="{ListaAuto>targa}" />
+                                <Text text="{ListaAuto>marca}" />
+                                <Text text="{ListaAuto>modello}" />
+                                <Text text="{ListaAuto>classe}" />
+                                <Text text="{ListaAuto>note}" />      
+                                <Button icon="sap-icon://edit" press="onEdit"/>   
+                                <Button icon="sap-icon://delete" press="onDelete"/>                                                                                      
                             </cells>
                         </ColumnListItem>
                     </items>                
@@ -79,7 +118,9 @@
 			<!-- DynamicPage Footer -->
 			<f:footer>
                <Toolbar>
-                 <Button press="onBack" icon="sap-icon://nav-back" ></Button>
+                 <Button press="onBack" text="{i18n>indietro}" icon="sap-icon://nav-back"/>
+                 <ToolbarSpacer/>
+			     <Button text="{i18n>NuovaAuto}" type="Emphasized" icon="sap-icon://create" press="onCreate"/>                 
                </Toolbar>
 			</f:footer>
 		</f:DynamicPage>

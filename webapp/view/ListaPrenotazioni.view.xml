@@ -36,18 +36,18 @@
                                     </fb:control>
                                 </fb:FilterGroupItem>
 
-                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>targa}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>lbData}" partOfCurrentVariant="true" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input type="Text" id="inTarga" ></Input>
-                                    </fb:control>
-                                </fb:FilterGroupItem>                                
-
-                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>lbData}" partOfCurrentVariant="true" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <DatePicker change="onChange" id="inDatacrea"/>
+                                        <DatePicker change="onChange"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>    
-
+                                </fb:filterGroupItems>
+                                <fb:filterGroupItems>
+                                <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>lbNewPren}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                    <fb:control>
+                                       <Button icon="sap-icon://add" press="onNewPrenotazione"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
 			                </fb:filterGroupItems>	
 
                         </fb:FilterBar>
@@ -58,7 +58,7 @@
                 <Table noDataText="{i18n>NoDataPrenotazione}" items="{Prenotazioni>/}" mode="SingleSelectMaster" selectionChange="onSelectionChange">
 
                     <columns>
-                        <Column  visible= "false">
+                        <Column>
                             <Text text="{i18n>id}"/>
                         </Column>                    
                         <Column>
@@ -121,13 +121,10 @@
 			<!-- DynamicPage Footer -->
 			<f:footer>
 			<Toolbar>
-				<Button icon="sap-icon://nav-back" press="onBack" />
-                <ToolbarSpacer/>
-                <Button text="{i18n>lbNewPren}" type="Emphasized" icon="sap-icon://add" press="onNewPrenotazione"/>
+				<Button icon="sap-icon://nav-back" text="Back" press="onBack" />
 			</Toolbar>
 			</f:footer>
 		</f:DynamicPage>
-
 		</App>
 	</Shell>
 </mvc:View>
